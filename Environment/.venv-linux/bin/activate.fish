@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/media/daro/Code/ZenMasterX/Entorno Virtual/.venv-linux"
+set -gx VIRTUAL_ENV "/media/daro/Code/ZenMasterX/Environment/.venv-linux"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
