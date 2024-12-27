@@ -1,0 +1,132 @@
+/* Centering the login container */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    background-color: #F0F8FF;
+}
+
+/* General styles for the auth box */
+.auth-box {
+    width: 90%;
+    max-width: 500px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Tab button styles */
+.tab-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    width: 48%;
+    padding: 12px;
+    background-color: #f0f8ff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.tab-button:hover {
+    background-color: #007bb5;
+    color: white;
+}
+
+.tab-button.active {
+    background-color: #00aaff;
+    color: white;
+}
+
+/* Content area where the forms are located */
+.tab-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Form styles */
+.form-card {
+    display: none;
+}
+
+.form-card.active {
+    display: block;
+}
+
+/* Form input and button styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-group button {
+    width: 100%;
+    padding: 12px;
+    background-color: #00aaff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-group button:hover {
+    background-color: #007bb5;
+}
+
+/* Forgot password link */
+.forgot-password-link {
+    color: #00aaff;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.forgot-password-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .auth-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .auth-box {
+        width: 80%;
+    }
+
+    .tab-button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .tab-buttons {
+        flex-direction: column;
+    }
+}
