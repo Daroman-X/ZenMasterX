@@ -81,3 +81,6 @@ Si deseas contribuir a **ZenMasterX**, por favor sigue estos pasos:
 ## Licencia
 
 Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
+
+
+ kill -9 $(lsof -t -i :8000)

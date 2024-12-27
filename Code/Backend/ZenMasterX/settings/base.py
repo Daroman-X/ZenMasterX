@@ -32,11 +32,11 @@ LOCAL_APPS=[
     'apps.ejercicios',
     'apps.finanzas',
     'apps.tareas',
-    'apps.usuarios'
+    'apps.usuarios',
 ]
 
 TERCEROS_APPS=[
-    
+    'fontawesomefree'
 ]
 
 INSTALLED_APPS=BASE_APPS+LOCAL_APPS+TERCEROS_APPS
@@ -98,3 +98,5 @@ AUTH_PASSWORD_VALIDATORS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'usuarios.Usuario'
+
+ 
