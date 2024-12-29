@@ -1,3 +1,13 @@
+.fondo {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-image: url('{% static "img/fondo-login.webp" %}');
+    background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que se repita */
+    height: 100vh; /* Asegura que el fondo cubra toda la altura de la página */
+}
+
 /* Centering the login container */
 .auth-container {
     display: flex;
@@ -18,6 +28,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-top:30%;
 }
 
 /* Tab button styles */
