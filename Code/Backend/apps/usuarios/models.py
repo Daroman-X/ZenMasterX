@@ -98,7 +98,7 @@ class Usuario(AbstractBaseUser,BaseModel):
     is_staff = models.BooleanField("Acceso al admin", default=False)  # Define el campo is_staff como BooleanField
     is_superuser = models.BooleanField("Superusuario", default=False)  # Para indicar si el usuario es superusuario
 
-    rol=models.ForeignKey(Rol, on_delete=models.CASCADE)
+    rol=models.ForeignKey(Rol, on_delete=models.CASCADE,default=2)
     
     objects=UsuarioPersonalizado()
     USERNAME_FIELD='correo'
@@ -115,18 +115,26 @@ class Usuario(AbstractBaseUser,BaseModel):
     def __str__(self):
         return f"{self.nombre_apellido} ({self.correo})"
     
+    def full_name(self):
+        return f"{self.nombre_apellido}"
+    
+ 
     def clean(self):
-        if not re.match(r"[^@]+@[^@]+\.[^@]+", self.correo):
+        # Verificar que los campos no sean None o vacíos antes de aplicar validaciones
+        if not self.nombre_apellido:
+            raise ValidationError("El nombre completo es obligatorio.")
+        
+        if not self.correo:
+            raise ValidationError("El correo electrónico es obligatorio.")
+        
+        if self.correo and not re.match(r"[^@]+@[^@]+\.[^@]+", self.correo):
             raise ValidationError("El correo electrónico no tiene un formato válido.")
-
-        if self.dominio_correo:
-            email_domain = self.correo.split('@')[-1]
-            if email_domain != self.dominio_correo.nombre:
-                raise ValidationError(f"El correo electrónico debe ser de dominio {self.dominio_correo.nombre}.")
-        if not self.numero_documento.isdigit():
-            raise ValidationError("El número de documento debe contener solo números.")
-        if not re.match(r'^[\d\s\+\-]+$', self.numero_contacto):
-            raise ValidationError("El número de contacto debe contener solo números, espacios, o los símbolos + y -. Verifique que no haya caracteres no permitidos.")
+        
+        if self.numero_contacto:
+            if not re.match(r'^[\d\s\+\-]+$', self.numero_contacto):
+                raise ValidationError("El número de contacto debe contener solo números, espacios, o los símbolos + y -. Verifique que no haya caracteres no permitidos.")
+        else:
+            raise ValidationError("El número de contacto es obligatorio.")
     
     def save(self, *args, **kwargs):
         if not self.slug:

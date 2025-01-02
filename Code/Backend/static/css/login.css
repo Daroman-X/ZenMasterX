@@ -1,12 +1,26 @@
-.fondo {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    background-image: url('{% static "img/fondo-login.webp" %}');
-    background-size: cover; /* Asegura que la imagen cubra todo el fondo */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que se repita */
-    height: 100vh; /* Asegura que el fondo cubra toda la altura de la página */
+/* Override the navbar styles */
+.navbar {
+    background-color: #003366 !important; /* Change to your preferred color */
+    border-bottom: 2px solid #00aaff !important; /* Change to your preferred border color */
 }
+
+.navbar-light .navbar-nav .nav-link {
+    color: white !important; /* Change to your preferred text color */
+}
+
+ 
+ 
+ .py-2{
+    
+    margin-top: -1%;
+ }
+
+/* Optional: Change the background color when the navbar is scrolled */
+.navbar.scrolled {
+    background-color: #2e3b4e !important; /* Change on scroll */
+}
+
+
 
 /* Centering the login container */
 .auth-container {
@@ -14,8 +28,7 @@
     justify-content: center;
     align-items: center;
     height: 60vh;
-    background-color: #F0F8FF;
-}
+ }
 
 /* General styles for the auth box */
 .auth-box {
@@ -167,3 +180,34 @@
         flex-direction: column;
     }
 }
+
+/* Footer styles */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #2e3b4e; /* You can change this to your desired color */
+    padding: 10px 0;
+    text-align: center;
+    color: #fff;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-logo {
+    width: 30px; /* Adjust the size of the logo */
+    height: auto;
+    margin-right: 10px;
+}
+
+footer span {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+ 

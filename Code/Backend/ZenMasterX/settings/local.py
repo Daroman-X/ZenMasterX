@@ -14,9 +14,9 @@ LOGIN_REDIRECT_URL = '/'
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-LOGIN_URL = '/login/'  # URL para la página de inicio de sesión
+LOGIN_URL = '/'  # URL para la página de inicio de sesión
 LOGOUT_REDIRECT_URL = '/'  # URL tras cerrar sesión
-LOGIN_REDIRECT_URL = '/'  # URL tras iniciar sesión con éxito
+LOGIN_REDIRECT_URL = '/inicio/'  # URL tras iniciar sesión con éxito
 
 LANGUAGE_CODE = 'es-co'
 TIME_ZONE = 'America/Bogota'

@@ -1,21 +1,43 @@
 {% extends "base/body.html" %}
 {% load static %}
-
-{% block title %}Iniciar Sesión / Registrarse{% endblock %}
+ 
+{% block title %}Iniciar Sesión {% endblock %}
 
 {% block content %}
-<div class="auth-container fondo">
- 
-   
+<div class="image-container" 
+     style="flex: 1; 
+            background-image: url('{% static 'img/daromanx.png' %}'); 
+            background-size: auto; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            height: 96vh; 
+            width: 100%;">
+
+<div class="auth-container">
     <div class="auth-box" style="margin-top:15%;">
-        <div class="tab-buttons">
-            <button class="tab-button active" id="login-tab">Iniciar sesión</button>
-            <button class="tab-button" id="register-tab">Registrarse</button>
-        </div>
+
         <div class="tab-content">
             <!-- Login Form -->
             <div id="login-form" class="form-card active">
-                 <form method="post">
+                <form method="post">
+                                  <!-- Mostrar mensajes de error -->
+                                  {% if form.errors %}
+                                  <div class="alert alert-danger mt-3">
+                                      <ul>
+                                          {% for field in form %}
+                                              {% if field.errors %}
+                                                  <li>
+                                                      {% for error in field.errors %}
+                                                          <strong>{{ field.label }}: </strong>{{ error }}<br>
+                                                      {% endfor %}
+                                                  </li>
+                                              {% endif %}
+                                          {% endfor %}
+                                      </ul>
+                                  </div>
+                              {% endif %}
+                              
+                              
                     {% csrf_token %}
                     <div class="form-group">
                         <label for="username">Correo</label>
@@ -32,63 +54,49 @@
                         <a href="#" class="forgot-password-link">¿Olvidaste tu contraseña?</a>
                     </div>
                 </form>
+
+  
+
             </div>
 
-            <!-- Register Form -->
-            <div id="register-form" class="form-card">
-                 <form method="post">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <label for="username">Nombre completo</label>
-                        <input type="text" id="username" name="username" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Correo electrónico</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
-                    </div>
-                           <!-- Nuevo campo para el número de contacto -->
-                           <div class="form-group">
-                            <label for="contact">Número de contacto</label>
-                            <input type="tel" id="contact" name="contact" class="form-control" required>
-                        </div>
-                    <div class="form-group">
-                        <label for="password">Contraseña</label>
-                        <input type="password" id="password" name="password" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="confirm_password">Confirmar Contraseña</label>
-                        <input type="password" id="confirm_password" name="confirm_password" class="form-control" required>
-                    </div>
-             
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-success">Registrarse</button>
-                    </div>
-                </form>
+            <!-- Información sobre solicitud de cuenta -->
+            <div class="info-message text-center mt-4">
+                <button class="info-btn" style="background: none; border: none; color: #00aaff; cursor: pointer;">
+                    <i class="fas fa-info-circle" style="font-size: 24px;"></i> 
+                    ¿No tienes una cuenta?
+                </button>
+                <div class="info-details" style="display: none; margin-top: 10px;">
+                    <p style="font-size: 1rem;">Si no tienes una cuenta, solicita el acceso enviando un correo a 
+                        <a href="mailto:developerdaro@gmail.com" style="color: #00aaff;">developerdaro@gmail.com</a>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+<footer class="footer">
+    <div class="footer-content">
+        <img src="{% static 'img/daromanx.png' %}" alt="DaromanX Logo" class="footer-logo">
+        <span>DaromanX 2024 - developerdaro@gmail.com</span>
+    </div>
+</footer>
+
+</div>
+
 <script>
-    // JavaScript to switch between login and register forms
-    const loginTab = document.getElementById('login-tab');
-    const registerTab = document.getElementById('register-tab');
-    const loginForm = document.getElementById('login-form');
-    const registerForm = document.getElementById('register-form');
+    // Mostrar información de solicitud al hacer clic en el ícono
+    const infoBtn = document.querySelector('.info-btn');
+    const infoDetails = document.querySelector('.info-details');
 
-    loginTab.addEventListener('click', () => {
-        loginTab.classList.add('active');
-        registerTab.classList.remove('active');
-        loginForm.classList.add('active');
-        registerForm.classList.remove('active');
-    });
-
-    registerTab.addEventListener('click', () => {
-        registerTab.classList.add('active');
-        loginTab.classList.remove('active');
-        registerForm.classList.add('active');
-        loginForm.classList.remove('active');
+    infoBtn.addEventListener('click', () => {
+        // Toggle visibility of the info message
+        if (infoDetails.style.display === 'none' || infoDetails.style.display === '') {
+            infoDetails.style.display = 'block';
+        } else {
+            infoDetails.style.display = 'none';
+        }
     });
 </script>
-{% endblock %}
 
+{% endblock %}
